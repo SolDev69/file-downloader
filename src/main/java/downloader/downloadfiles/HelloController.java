@@ -1,4 +1,4 @@
-package oct.maps.downloadoctmaps;
+package downloader.downloadfiles;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

@@ -4,7 +4,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="oct.maps.downloadoctmaps.DoneViewController">
+<VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="downloader.downloadfiles.DoneViewController">
     <Label text="All downloads are completed!" />
     <Button text="Close" onAction="#close"/>
 </VBox>

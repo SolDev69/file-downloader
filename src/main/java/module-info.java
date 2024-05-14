@@ -1,8 +1,8 @@
-module oct.maps.downloadoctmaps {
+module downloader.downloadfiles {
     requires javafx.controls;
     requires javafx.fxml;
 
 
-    opens oct.maps.downloadoctmaps to javafx.fxml;
-    exports oct.maps.downloadoctmaps;
+    opens downloader.downloadfiles to javafx.fxml;
+    exports downloader.downloadfiles;
 }
