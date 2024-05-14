@@ -25,17 +25,17 @@ tasks.withType(JavaCompile) {
 }
 
 application {
-    mainModule = 'oct.maps.downloadoctmaps'
-    mainClass = 'oct.maps.downloadoctmaps.HelloApplication'
+    mainModule = 'downloader.downloadfiles'
+    mainClass = 'downloader.downloadfiles.HelloApplication'
 }
 
 javafx {
-    version = '17.0.6'
+    version = '17.0.2'
     modules = ['javafx.controls', 'javafx.fxml']
 }
 
 dependencies {
-
+    // Your dependencies here
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
 }
@@ -44,14 +44,19 @@ test {
     useJUnitPlatform()
 }
 
-jlink {
-    imageZip = project.file("${buildDir}/distributions/app-${javafx.platform.classifier}.zip")
-    options = ['--strip-debug', '--compress', '2', '--no-header-files', '--no-man-pages']
-    launcher {
-        name = 'app'
+jar {
+    manifest {
+        attributes 'Main-Class': 'downloader.downloadfiles.HelloApplication'
     }
 }
 
-jlinkZip {
-    group = 'distribution'
+// Task to build a runnable JAR
+task createRunnableJar(type: Jar) {
+    dependsOn('jlink')
+    from("${buildDir}/image/bin") // Adjust the path to match the location of your JLink output
+    archiveFileName = "app.jar"
+    destinationDirectory = file("${buildDir}/libs")
 }
+
+// Include the runnable JAR task in the build process
+build.dependsOn(createRunnableJar)
