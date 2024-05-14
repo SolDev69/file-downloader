@@ -14,23 +14,27 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 
-public class HelloController {
-
-    @FXML
-    private TextArea urlText;
-
-    @FXML
-    private TextArea suffixText;
-
+public class DownloadController {
 
 
     @FXML
-    protected void download()
+    protected void initialize()
+    {
+
+    }
+
+
+    void download(String a, String b)
+    {
+        download(a,b,"");
+    }
+
+    void download(String a, String b, String c)
     {
         try {
-            for (int i = 0; i < 999; i++) {
+            for (int i = 1; i < 999; i++) {
                 String formattedNumber = String.format("%03d", i);
-                downloadFile(urlText.getText() + formattedNumber + suffixText.getText(), formattedNumber);
+                downloadFile(a + formattedNumber + b, formattedNumber, c);
             }
             showCompletionWindow();
         } catch (IOException e)
@@ -39,9 +43,36 @@ public class HelloController {
             e.printStackTrace();
         }
     }
+    @FXML
+    protected void downloadCurrent()
+    {
+        download("https://www.octranspo.com/images/files/routes_pdf/map_carte_", ".pdf");
+    }
+
+    @FXML
+    protected void downloadNWTB()
+    {
+        download("https://www.octranspo.com/images/files/files/routes_pdf_future/RD_Map_", "_(Jan2024).pdf");
+
+    }
+
+    @FXML
+    protected void downloadOlder()
+    {
+        download("https://www.octranspo.com/images/files/files/routes_pdf/map_carte_", ".pdf");
+    }
+
+    @FXML
+    protected void downloadAll()
+    {
+        download("https://www.octranspo.com/images/files/routes_pdf/map_carte_", ".pdf");
+        download("https://www.octranspo.com/images/files/files/routes_pdf_future/RD_Map_", "_(Jan2024).pdf");
+        download("https://www.octranspo.com/images/files/files/routes_pdf/map_carte_", ".pdf", "older");
+
+    }
 
 
-    void downloadFile(String fileURL, String numbers) throws IOException {
+    void downloadFile(String fileURL, String numbers, String downloadDirectory) throws IOException {
         URL url = new URL(fileURL);
         HttpURLConnection httpConn = (HttpURLConnection) url.openConnection();
         int responseCode = httpConn.getResponseCode();
@@ -60,7 +91,7 @@ public class HelloController {
             }
 
             InputStream inputStream = httpConn.getInputStream();
-            String saveFilePath = System.getProperty("user.dir") + "/" + fileName;
+            String saveFilePath = System.getProperty("user.dir") + "/" + downloadDirectory + "/" + fileName;
 
             FileOutputStream outputStream = new FileOutputStream(saveFilePath);
 

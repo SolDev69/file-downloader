@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<HBox alignment="CENTER" prefHeight="500.0" prefWidth="807.0" spacing="20.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="downloader.downloadfiles.DownloadController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+   <Button onAction="#downloadAll" prefHeight="293.0" prefWidth="320.0" text="Download all maps" />
+   <VBox prefHeight="460.0" prefWidth="337.0">
+      <children>
+           <Button onAction="#downloadNWTB" prefHeight="131.0" prefWidth="343.0" text="Download NWTB maps" />
+         <HBox prefHeight="100.0" prefWidth="200.0" />
+           <Button onAction="#downloadCurrent" prefHeight="165.0" prefWidth="431.0" text="Download current maps" />
+           <Button onAction="#downloadOlder" prefHeight="165.0" prefWidth="450.0" text="Download slightly older maps" />
+      </children>
+   </VBox>
+</HBox>
