@@ -12,8 +12,9 @@
    <VBox prefHeight="460.0" prefWidth="337.0">
       <children>
            <Button onAction="#downloadNWTB" prefHeight="131.0" prefWidth="343.0" text="Download NWTB maps" />
-         <HBox prefHeight="100.0" prefWidth="200.0" />
+           <HBox prefHeight="100.0" prefWidth="200.0" />
            <Button onAction="#downloadCurrent" prefHeight="165.0" prefWidth="431.0" text="Download current maps" />
+           <HBox prefHeight="100.0" prefWidth="200.0" />
            <Button onAction="#downloadOlder" prefHeight="165.0" prefWidth="450.0" text="Download slightly older maps" />
       </children>
    </VBox>
