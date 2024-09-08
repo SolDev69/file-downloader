@@ -4,6 +4,7 @@ on:
   workflow_dispatch: # Allows manual triggering of the workflow
   schedule:
     - cron: '0 0 * * *' # Run every day at midnight (optional, adjust as needed)
+  push:
 
 jobs:
   download:
