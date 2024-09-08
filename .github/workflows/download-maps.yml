@@ -20,6 +20,12 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
+      - name: Install JavaFX SDK
+        run: |
+          wget https://gluonhq.com/download/javafx-sdk-17.0.2-linux/bin/javafx-sdk-17.0.2-linux.zip
+          unzip javafx-sdk-17.0.2-linux.zip -d $HOME/javafx
+          echo "JAVA_FX_HOME=$HOME/javafx/javafx-sdk-17.0.2" >> $GITHUB_ENV
+
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 
