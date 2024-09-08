@@ -3,7 +3,6 @@ plugins {
     id 'application'
     id 'org.javamodularity.moduleplugin' version '1.8.12'
     id 'org.openjfx.javafxplugin' version '0.0.13'
-    id 'org.beryx.jlink' version '2.25.0'
 }
 
 group 'oct.maps'
@@ -35,28 +34,59 @@ javafx {
 }
 
 dependencies {
-    // Your dependencies here
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
 }
+
+// Create a fat (executable) JAR
+jar {
+    manifest {
+        attributes 'Main-Class': 'downloader.downloadfiles.HelloApplication'
+    }
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+}
+
+// Ensure the jar task runs on build
+build.dependsOn(jar)
 
 test {
     useJUnitPlatform()
 }
 
-jar {
-    manifest {
-        attributes 'Main-Class': 'downloader.downloadfiles.HelloApplication'
-    }
+// Custom tasks for different download types
+task downloadNWTB(type: JavaExec) {
+    group = 'downloads'
+    description = 'Download NWTB maps'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'downloader.downloadfiles.HelloApplication'
+    args 'NWTB'
 }
 
-// Task to build a runnable JAR
-task createRunnableJar(type: Jar) {
-    dependsOn('jlink')
-    from("${buildDir}/image/bin") // Adjust the path to match the location of your JLink output
-    archiveFileName = "app.jar"
-    destinationDirectory = file("${buildDir}/libs")
+task downloadCurrent(type: JavaExec) {
+    group = 'downloads'
+    description = 'Download current maps'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'downloader.downloadfiles.HelloApplication'
+    args 'current'
 }
 
-// Include the runnable JAR task in the build process
-build.dependsOn(createRunnableJar)
+task downloadOlder(type: JavaExec) {
+    group = 'downloads'
+    description = 'Download older maps'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'downloader.downloadfiles.HelloApplication'
+    args 'old'
+}
+
+// Custom task for downloading all maps
+task downloadAll(type: JavaExec) {
+    group = 'downloads'
+    description = 'Download all maps (NWTB, current, older)'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'downloader.downloadfiles.HelloApplication'
+    args 'all'
+}
