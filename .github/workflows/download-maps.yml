@@ -17,19 +17,8 @@ jobs:
       - name: Set up JDK 17
         uses: actions/setup-java@v3
         with:
-          distribution: 'temurin'
+          distribution: 'oracle'
           java-version: '17'
-
-      - name: Install JavaFX SDK
-        run: |
-          # Define JavaFX version and URL
-          JAVA_FX_VERSION="20.0.1"
-          JAVA_FX_URL="https://download2.gluonhq.com/openjfx/${JAVA_FX_VERSION}/javafx-sdk-${JAVA_FX_VERSION}_linux-x64_bin-sdk.zip"
-          
-          # Download and unzip JavaFX SDK
-          wget $JAVA_FX_URL -O javafx-sdk.zip
-          unzip javafx-sdk.zip -d $HOME/javafx
-          echo "JAVA_FX_HOME=$HOME/javafx/javafx-sdk-${JAVA_FX_VERSION}" >> $GITHUB_ENV
 
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
