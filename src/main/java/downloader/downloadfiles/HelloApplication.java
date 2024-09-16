@@ -45,7 +45,9 @@ public class HelloApplication extends Application {
                     break;
                 default:
                     System.out.println("Invalid argument: " + savedArgs[0]);
+                    System.exit(-1);
             }
+            System.exit(0);
         }
         else
         {
