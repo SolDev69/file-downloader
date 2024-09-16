@@ -25,7 +25,7 @@ jobs:
           export PATH=`pwd`/zulu17.52.17-ca-fx-jdk17.0.12-linux_x64/bin/:$PATH
           export JAVA_HOME=`pwd`/zulu17.52.17-ca-fx-jdk17.0.12-linux_x64/
           chmod +x gradlew
-          ./gradlew downloadAll
+          ./gradlew build downloadAll
 
       - name: Archive downloaded maps
         run: |
