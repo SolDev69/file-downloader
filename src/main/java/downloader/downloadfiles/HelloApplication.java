@@ -5,13 +5,9 @@ import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
-import java.security.spec.ECField;
-import java.util.Objects;
 
 public class HelloApplication extends Application {
 
@@ -45,7 +41,7 @@ public class HelloApplication extends Application {
                     dc.downloadAll();
                     break;
                 default:
-                    System.out.println("Invalid argument: " + savedArgs[0]);
+                    System.err.println("Invalid argument: " + savedArgs[0]);
             }
             Platform.exit();
         }
@@ -58,7 +54,7 @@ public class HelloApplication extends Application {
         }
     }
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         launch(args);
     }
 
