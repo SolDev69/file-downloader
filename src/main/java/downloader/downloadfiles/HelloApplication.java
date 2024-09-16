@@ -1,6 +1,7 @@
 package downloader.downloadfiles;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -33,24 +34,20 @@ public class HelloApplication extends Application {
             switch (savedArgs[0]) {
                 case "NWTB":
                     dc.downloadNWTB();
-                    System.exit(0);
                     break;
                 case "current":
                     dc.downloadCurrent();
-                    System.exit(0);
                     break;
                 case "old":
                     dc.downloadOlder();
-                    System.exit(0);
                     break;
                 case "all":
                     dc.downloadAll();
-                    System.exit(0);
                     break;
                 default:
                     System.out.println("Invalid argument: " + savedArgs[0]);
-                    System.exit(-1);
             }
+            Platform.exit();
         }
         else
         {
