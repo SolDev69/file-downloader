@@ -30,7 +30,7 @@ jobs:
       - name: Archive downloaded maps
         run: |
           mkdir -p archive
-          zip -r archive/OCTMaps.zip OCTMaps
+          zip -r archive/OCTMaps-$(date +%F).zip OCTMaps
           mv build/libs/*.jar archive/
 
       - name: Upload downloaded maps and jar as artifact
