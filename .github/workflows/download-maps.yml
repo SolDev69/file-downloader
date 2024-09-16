@@ -17,8 +17,8 @@ jobs:
       - name: Download all maps
         run: |
           sudo apt update
-          sudo apt install xserver-xephyr -y
-          Xephyr :0 &
+          sudo apt install -y xvfb
+          Xvfb :0 &
           export DISPLAY=:0
           wget https://cdn.azul.com/zulu/bin/zulu17.52.17-ca-fx-jdk17.0.12-linux_x64.tar.gz
           tar -xzvf zulu17.52.17-ca-fx-jdk17.0.12-linux_x64.tar.gz
