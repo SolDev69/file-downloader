@@ -33,21 +33,24 @@ public class HelloApplication extends Application {
             switch (savedArgs[0]) {
                 case "NWTB":
                     dc.downloadNWTB();
+                    System.exit(0);
                     break;
                 case "current":
                     dc.downloadCurrent();
+                    System.exit(0);
                     break;
                 case "old":
                     dc.downloadOlder();
+                    System.exit(0);
                     break;
                 case "all":
                     dc.downloadAll();
+                    System.exit(0);
                     break;
                 default:
                     System.out.println("Invalid argument: " + savedArgs[0]);
                     System.exit(-1);
             }
-            System.exit(0);
         }
         else
         {
