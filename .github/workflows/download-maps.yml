@@ -14,16 +14,18 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Grant execute permission for gradlew
-        run: chmod +x gradlew
-
       - name: Download all maps
         run: |
-         wget https://cdn.azul.com/zulu/bin/zulu17.52.17-ca-fx-jdk17.0.12-linux_x64.tar.gz
-         tar -xzvf zulu17.52.17-ca-fx-jdk17.0.12-linux_x64.tar.gz
-         export PATH=`pwd`/zulu17.52.17-ca-fx-jdk17.0.12-linux_x64/bin/:$PATH
-         export JAVA_HOME=`pwd`/zulu17.52.17-ca-fx-jdk17.0.12-linux_x64/
-         ./gradlew downloadAll
+          sudo apt update
+          sudo apt install xserver-xephyr -y
+          Xephyr :0
+          export DISPLAY=:0
+          wget https://cdn.azul.com/zulu/bin/zulu17.52.17-ca-fx-jdk17.0.12-linux_x64.tar.gz
+          tar -xzvf zulu17.52.17-ca-fx-jdk17.0.12-linux_x64.tar.gz
+          export PATH=`pwd`/zulu17.52.17-ca-fx-jdk17.0.12-linux_x64/bin/:$PATH
+          export JAVA_HOME=`pwd`/zulu17.52.17-ca-fx-jdk17.0.12-linux_x64/
+          chmod +x gradlew
+          ./gradlew downloadAll
 
       - name: Archive downloaded maps
         run: |
