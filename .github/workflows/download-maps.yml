@@ -14,12 +14,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Set up JDK 17
-        uses: actions/setup-java@v3
-        with:
-          distribution: 'oracle'
-          java-version: '17'
-
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 
@@ -27,7 +21,12 @@ jobs:
         run: ./gradlew build
 
       - name: Download all maps
-        run: ./gradlew downloadAll
+        run: |
+           wget https://cdn.azul.com/zulu/bin/zulu17.52.17-ca-fx-jdk17.0.12-linux_x64.tar.gz
+          tar -xzvf zulu17.52.17-ca-fx-jdk17.0.12-linux_x64.tar.gz
+          export PATH=`pwd`/zulu17.52.17-ca-fx-jdk17.0.12-linux_x64/bin/:$PATH
+          export JAVA_HOME=`pwd`/zulu17.52.17-ca-fx-jdk17.0.12-linux_x64/
+          ./gradlew downloadAll
 
       - name: Archive downloaded maps
         run: |
