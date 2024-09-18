@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class HelloApplication extends Application {
+public class DownloaderApp extends Application {
 
     private static String[] savedArgs;
 
@@ -22,7 +22,7 @@ public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException
     {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("download-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(DownloaderApp.class.getResource("download-view.fxml"));
         Parent root = fxmlLoader.load();
         // Get the controller and call methods based on arguments
         DownloadController dc = fxmlLoader.getController();
