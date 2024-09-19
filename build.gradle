@@ -62,7 +62,7 @@ task downloadNWTB(type: JavaExec) {
     group = 'downloads'
     description = 'Download NWTB maps'
     classpath = sourceSets.main.runtimeClasspath
-    mainClass = 'downloader.downloadfiles.HelloApplication'
+    mainClass = 'downloader.downloadfiles.DownloaderApp'
     args 'NWTB'
 }
 
@@ -70,7 +70,7 @@ task downloadCurrent(type: JavaExec) {
     group = 'downloads'
     description = 'Download current maps'
     classpath = sourceSets.main.runtimeClasspath
-    mainClass = 'downloader.downloadfiles.HelloApplication'
+    mainClass = 'downloader.downloadfiles.DownloaderApp'
     args 'current'
 }
 
@@ -78,7 +78,7 @@ task downloadOlder(type: JavaExec) {
     group = 'downloads'
     description = 'Download older maps'
     classpath = sourceSets.main.runtimeClasspath
-    mainClass = 'downloader.downloadfiles.HelloApplication'
+    mainClass = 'downloader.downloadfiles.DownloaderApp'
     args 'old'
 }
 
@@ -87,6 +87,6 @@ task downloadAll(type: JavaExec) {
     group = 'downloads'
     description = 'Download all maps (NWTB, current, older)'
     classpath = sourceSets.main.runtimeClasspath
-    mainClass = 'downloader.downloadfiles.HelloApplication'
+    mainClass = 'downloader.downloadfiles.DownloaderApp'
     args 'all'
 }
