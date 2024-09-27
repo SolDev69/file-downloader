@@ -25,7 +25,7 @@ tasks.withType(JavaCompile) {
 
 application {
     mainModule = 'downloader.downloadfiles'
-    mainClass = 'downloader.downloadfiles.HelloApplication'
+    mainClass = 'downloader.downloadfiles.DownloaderApp'
 }
 
 javafx {
@@ -41,7 +41,7 @@ dependencies {
 // Create a fat (executable) JAR
 jar {
     manifest {
-        attributes 'Main-Class': 'downloader.downloadfiles.HelloApplication'
+        attributes 'Main-Class': 'downloader.downloadfiles.DownloaderApp'
     }
     from {
         configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
