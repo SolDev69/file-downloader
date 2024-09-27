@@ -131,7 +131,7 @@ public class DownloadController {
 
     void showCompletionWindow() {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(DownloaderApplication.class.getResource("done-view.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(DownloaderApp.class.getResource("done-view.fxml"));
             Scene scene = new Scene(fxmlLoader.load());
 
             Stage doneStage = new Stage();
