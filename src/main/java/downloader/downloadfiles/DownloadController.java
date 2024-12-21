@@ -64,6 +64,11 @@ public class DownloadController {
     }
 
     @FXML
+    protected void downloadNew() {
+        download("https://www.octranspo.com/images/files/routes_pdf_future/map_carte_", "_(Jan2024).pdf", "new");
+    }
+
+    @FXML
     protected void downloadAll() {
         ExecutorService executor = Executors.newFixedThreadPool(3); // Create a pool of 3 threads
 
@@ -84,6 +89,12 @@ public class DownloadController {
             System.out.println("Starting download for older maps...");
             download("https://www.octranspo.com/images/files/files/routes_pdf/map_carte_", ".pdf", "older");
             System.out.println("Finished downloading older maps.");
+        });
+
+        executor.submit(() -> {
+            System.out.println("Starting download for new maps...");
+            download("https://www.octranspo.com/images/files/routes_pdf_future/map_carte_", ".pdf", "new");
+            System.out.println("Finished downloading new maps.");
         });
 
         executor.shutdown(); // Gracefully shutdown the executor after tasks finish
