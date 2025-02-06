@@ -34,7 +34,7 @@ jobs:
           mv build/libs/*.jar archive/
 
       - name: Upload downloaded maps and jar as artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: OCTMaps
           path: archive/
